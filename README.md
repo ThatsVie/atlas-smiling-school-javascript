@@ -78,3 +78,39 @@ The Holberton Smiling School web pages were developed by sections using the Boot
 Jhoan Zamora: [jzamora5](https://github.com/jzamora5)
 
 </details>
+
+# Atlas - Smiling School Javascript
+This project is an enhancement of the Holberton Smiling School project, adding dynamic JavaScript functionality to create a more interactive and user-friendly experience.
+
+## JavaScript Additions
+
+The primary JavaScript functionalities added to the project include dynamic content loading for quotes, tutorials, latest videos, and courses using AJAX requests. The functionality also includes handling user interactions for filtering and sorting courses.
+
+## Functions
+
+1. **Document Ready Initialization**
+ 
+   This function initializes the loading of different content based on the current page.
+
+2. **populateQuotes**
+          
+   This function dynamically loads quotes from an API and updates the carousel.
+
+3. **populateTutorials**
+   
+   This function dynamically loads popular tutorials from an API and updates the carousel.
+
+4. **populateLatest**
+
+   This function dynamically loads the latest videos from an API and updates the carousel.
+
+5. **populateCourseCategories**
+ 
+   This function dynamically loads course categories and sorting options from an API and populates the dropdown menus.
+
+6. **populateCourses**
+ 
+   This function dynamically loads courses based on selected keywords, topics, and sorting preferences, and updates the course zone.
+
+## Author
+Vie Paula - [Github](https://github.com/ThatsVie)
