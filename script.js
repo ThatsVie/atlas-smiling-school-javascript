@@ -1,41 +1,33 @@
 $(document).ready(function() {
-    console.log('Document is ready');
+    console.log("Document is ready");
     const currentPath = window.location.pathname;
-    console.log('Current path:', currentPath);
-    const basePath = '/atlas-smiling-school-javascript';
+    console.log("Current path:", currentPath);
 
-    if (currentPath === `${basePath}/homepage.html`) {
-        console.log('Loading homepage functions');
+    const basePath = '/';
+    console.log("Base path:", basePath);
+
+    if (currentPath === `${basePath}index.html`) {
+        console.log("Populating quotes for homepage");
         populateQuotes();
         populateTutorials();
         populateLatest();
-    } else if (currentPath === `${basePath}/pricing.html`) {
-        console.log('Loading pricing functions');
+    } else if (currentPath === `${basePath}pricing.html`) {
+        console.log("Populating quotes for pricing page");
         populateQuotes();
-    } else if (currentPath === `${basePath}/courses.html`) {
-        console.log('Loading courses functions');
+    } else if (currentPath === `${basePath}courses.html`) {
+        console.log("Populating course categories and courses for courses page");
         populateCourseCategories();
         populateCourses();
-        
-        const keywordsInput = document.getElementById('select-keywords');
-        if (keywordsInput) {
-            console.log('Keywords input found:', keywordsInput);
-            keywordsInput.addEventListener('input', populateCourses);
-        } else {
-            console.error('Keywords input not found');
-        }
+    }
+
+    const keywordsInput = document.getElementById('select-keywords');
+    if (keywordsInput) {
+        console.log("Adding event listener to keywords input");
+        keywordsInput.addEventListener('input', populateCourses);
+    } else {
+        console.log("Keywords input not found");
     }
 });
-
-function changeTopic(option) {
-    document.getElementById('select-topic').innerText = option;
-    populateCourses();
-}
-
-function changeSort(option) {
-    document.getElementById('select-sort-by').innerText = option;
-    populateCourses();
-}
 
 function populateQuotes() {
     console.log("Fetching quotes...");
@@ -47,6 +39,7 @@ function populateQuotes() {
             const quoteCarousel = $('#quote-carousel');
             
             response.forEach((quote, index) => {
+                console.log("Processing quote:", quote);
                 const carouselItem = $('<div>').addClass('carousel-item');
                 const row = $('<div>').addClass('row mx-auto align-items-center');
                 const imgCol = $('<div>').addClass('col-12 col-sm-2 col-lg-2 offset-lg-1 text-center');
@@ -77,6 +70,8 @@ function populateQuotes() {
         }
     });
 }
+
+
 
 function populateTutorials() {
     $.ajax({
