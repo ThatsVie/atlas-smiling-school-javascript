@@ -80,7 +80,7 @@ Jhoan Zamora: [jzamora5](https://github.com/jzamora5)
 </details>
 
 # Atlas - Smiling School Javascript
-This project is an enhancement of the Holberton Smiling School project, adding dynamic JavaScript functionality to create a more interactive and user-friendly experience.
+This project is an enhancement of the Holberton Smiling School project, adding dynamic JavaScript functionality.
 
 ## JavaScript Additions
 
