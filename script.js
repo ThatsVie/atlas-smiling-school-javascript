@@ -246,25 +246,30 @@ function populateCourses() {
     $('#loading-courses').removeClass('d-none');
     $('#course-container').addClass('d-none');
 
-    const keywordInput = document.getElementById('select-keywords');
-    const topicSelect = document.getElementById('select-topic');
-    const sortBySelect = document.getElementById('select-sort-by');
+    const keywordInput = document.getElementById('select-keywords').value.toLowerCase();
+    const topicSelect = document.getElementById('select-topic').textContent.toLowerCase();
+    const sortBySelect = document.getElementById('select-sort-by').textContent;
 
     $.ajax({
         url: "https://smileschool-api.hbtn.info/courses",
         method: "GET",
         success: function(response) {
+            console.log("Courses data received:", response);
+
             const courseZone = $('#course-zone');
+            courseZone.empty();
 
             let courseCount = 0;
             let courseArray = [];
 
             response.courses.forEach(function(course) {
-                if (course.topic === topicSelect.textContent || topicSelect.textContent === "All") {
-                    const keywordFilter = keywordInput.value.toLowerCase();
-                    const courseKeywords = course.keywords.map(keyword => keyword.toLowerCase());
+                const courseTopic = course.topic.toLowerCase();
+                const courseKeywords = course.keywords.map(keyword => keyword.toLowerCase());
 
-                    if (keywordInput.value === '' || courseKeywords.includes(keywordFilter)) {
+                // Check if course matches the selected topic
+                if (topicSelect === "all" || courseTopic === topicSelect) {
+                    // Check if course matches the keyword filter
+                    if (keywordInput === '' || courseKeywords.includes(keywordInput)) {
                         courseCount += 1;
                         const courseCol = $('<div>').addClass('col-12 col-sm-4 col-lg-3 d-flex justify-content-center');
                         const card = $('<div>').addClass('card p-3');
@@ -275,7 +280,7 @@ function populateCourses() {
                         const cardTitle = $('<h5>').addClass('card-title font-weight-bold').text(course.title);
                         const cardSubtitle = $('<p>').addClass('card-text text-muted').text(course.sub_title);
                         const views = $('<p>').addClass('card-text text-muted').text(`views: ${course.views}`);
-                        const publishedDate = $('<p>').addClass('card-text text-muted').text(`Published: ${course.published_at}`);
+                        const publishedDate = $('<p>').addClass('card-text text-muted').text(`Published: ${new Date(course.published_at * 1000).toLocaleDateString()}`);
                         const keywords = $('<p>').addClass('card-text text-muted').text(`Keywords: ${course.keywords.join(', ')}`);
                         const topic = $('<p>').addClass('card-text text-muted').text(`Topic: ${course.topic}`);
                         const creatorContainer = $('<div>').addClass('creator d-flex align-items-center');
@@ -303,21 +308,28 @@ function populateCourses() {
                         card.append(thumbnail, cardOverlay, cardBody);
                         courseCol.append(card);
 
-                        const sortValue = sortBySelect.textContent;
+                        const sortValue = sortBySelect;
                         if (sortValue === 'Most Popular') {
                             courseArray.push([courseCol, course.star]);
-                            courseArray.sort((a, b) => b[1] - a[1]);
                         } else if (sortValue === 'Most Recent') {
                             courseArray.push([courseCol, course.published_at]);
-                            courseArray.sort((a, b) => b[1] - a[1]);
                         } else if (sortValue === 'Most Viewed') {
                             courseArray.push([courseCol, course.views]);
-                            courseArray.sort((a, b) => b[1] - a[1]);
                         }
                     }
                 }
             });
 
+            // Sort the courses based on the selected sort criteria
+            if (sortBySelect === 'Most Popular') {
+                courseArray.sort((a, b) => b[1] - a[1]);
+            } else if (sortBySelect === 'Most Recent') {
+                courseArray.sort((a, b) => b[1] - a[1]);
+            } else if (sortBySelect === 'Most Viewed') {
+                courseArray.sort((a, b) => b[1] - a[1]);
+            }
+
+            // Append the sorted courses to the DOM
             courseArray.forEach(function(courses) {
                 courseZone.append(courses[0]);
             });
@@ -328,6 +340,7 @@ function populateCourses() {
             $('#course-container').removeClass('d-none');
         },
         error: function() {
+            console.error("Error loading courses");
             alert("Error loading courses");
         }
     });
