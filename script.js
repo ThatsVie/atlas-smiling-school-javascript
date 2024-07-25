@@ -86,7 +86,7 @@ function populateTutorials() {
                 const playButton = $('<img>').addClass('mx-auto my-auto play-overlay').attr('src', 'images/play.png').attr('width', '64px');
                 const cardBody = $('<div>').addClass('card-body');
                 const cardTitle = $('<h5>').addClass('card-title font-weight-bold').text(tutorial.title);
-                const cardSubtitle = $('<p>').addClass('card-text text-muted').text(tutorial.sub_title);
+                const cardSubtitle = $('<p>').addClass('card-text text-muted').text(tutorial["sub-title"]);
                 const creatorContainer = $('<div>').addClass('creator d-flex align-items-center');
                 const creatorImage = $('<img>').addClass('rounded-circle').attr('src', tutorial.author_pic_url).attr('width', '30px');
                 const creatorName = $('<h6>').addClass('pl-3 m-0 main-color').text(tutorial.author);
@@ -157,7 +157,7 @@ function populateLatest() {
                 const playButton = $('<img>').addClass('mx-auto my-auto play-overlay').attr('src', 'images/play.png').attr('width', '64px');
                 const cardBody = $('<div>').addClass('card-body');
                 const cardTitle = $('<h5>').addClass('card-title font-weight-bold').text(tutorial.title);
-                const cardSubtitle = $('<p>').addClass('card-text text-muted').text(tutorial.sub_title);
+                const cardSubtitle = $('<p>').addClass('card-text text-muted').text(tutorial["sub-title"]);
                 const creatorContainer = $('<div>').addClass('creator d-flex align-items-center');
                 const creatorImage = $('<img>').addClass('rounded-circle').attr('src', tutorial.author_pic_url).attr('width', '30px');
                 const creatorName = $('<h6>').addClass('pl-3 m-0 main-color').text(tutorial.author);
