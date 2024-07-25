@@ -29,6 +29,7 @@ $(document).ready(function() {
     }
 });
 
+
 function populateQuotes() {
     console.log("Fetching quotes...");
     $.ajax({
@@ -70,8 +71,6 @@ function populateQuotes() {
         }
     });
 }
-
-
 
 function populateTutorials() {
     $.ajax({
@@ -320,7 +319,7 @@ function populateCourses() {
                 }
             });
 
-            // Sort the courses based on the selected sort criteria
+            // sort the courses based on the selected sort criteria
             if (sortBySelect === 'Most Popular') {
                 courseArray.sort((a, b) => b[1] - a[1]);
             } else if (sortBySelect === 'Most Recent') {
@@ -329,7 +328,7 @@ function populateCourses() {
                 courseArray.sort((a, b) => b[1] - a[1]);
             }
 
-            // Append the sorted courses to the DOM
+            // append the sorted courses to the DOM
             courseArray.forEach(function(courses) {
                 courseZone.append(courses[0]);
             });
@@ -344,4 +343,14 @@ function populateCourses() {
             alert("Error loading courses");
         }
     });
+}
+
+function changeTopic(option) {
+    document.getElementById('select-topic').innerText = option;
+    populateCourses();
+}
+
+function changeSort(option) {
+    document.getElementById('select-sort-by').innerText = option;
+    populateCourses();
 }
