@@ -240,7 +240,6 @@ function populateCourseCategories() {
     });
 }
 
-
 function populateCourses() {
     $('#loading-courses').removeClass('d-none');
     $('#course-container').addClass('d-none');
@@ -265,9 +264,7 @@ function populateCourses() {
                 const courseTopic = course.topic.toLowerCase();
                 const courseKeywords = course.keywords.map(keyword => keyword.toLowerCase());
 
-                // Check if course matches the selected topic
                 if (topicSelect === "all" || courseTopic === topicSelect) {
-                    // Check if course matches the keyword filter
                     if (keywordInput === '' || courseKeywords.includes(keywordInput)) {
                         courseCount += 1;
                         const courseCol = $('<div>').addClass('col-12 col-sm-4 col-lg-3 d-flex justify-content-center');
@@ -277,11 +274,7 @@ function populateCourses() {
                         const playButton = $('<img>').addClass('mx-auto my-auto play-overlay').attr('src', 'images/play.png').attr('width', '64px');
                         const cardBody = $('<div>').addClass('card-body');
                         const cardTitle = $('<h5>').addClass('card-title font-weight-bold').text(course.title);
-                        const cardSubtitle = $('<p>').addClass('card-text text-muted').text(course.sub_title);
-                        const views = $('<p>').addClass('card-text text-muted').text(`views: ${course.views}`);
-                        const publishedDate = $('<p>').addClass('card-text text-muted').text(`Published: ${new Date(course.published_at * 1000).toLocaleDateString()}`);
-                        const keywords = $('<p>').addClass('card-text text-muted').text(`Keywords: ${course.keywords.join(', ')}`);
-                        const topic = $('<p>').addClass('card-text text-muted').text(`Topic: ${course.topic}`);
+                        const cardSubtitle = $('<p>').addClass('card-text text-muted').text(course['sub-title']);
                         const creatorContainer = $('<div>').addClass('creator d-flex align-items-center');
                         const creatorImage = $('<img>').addClass('rounded-circle').attr('src', course.author_pic_url).attr('width', '30px');
                         const creatorName = $('<h6>').addClass('pl-3 m-0 main-color').text(course.author);
@@ -302,7 +295,7 @@ function populateCourses() {
 
                         cardFooter.append(ratingContainer, duration);
                         creatorContainer.append(creatorImage, creatorName);
-                        cardBody.append(cardTitle, cardSubtitle, views, publishedDate, keywords, topic, creatorContainer, cardFooter);
+                        cardBody.append(cardTitle, cardSubtitle, creatorContainer, cardFooter);
                         cardOverlay.append(playButton);
                         card.append(thumbnail, cardOverlay, cardBody);
                         courseCol.append(card);
@@ -319,7 +312,6 @@ function populateCourses() {
                 }
             });
 
-            // sort the courses based on the selected sort criteria
             if (sortBySelect === 'Most Popular') {
                 courseArray.sort((a, b) => b[1] - a[1]);
             } else if (sortBySelect === 'Most Recent') {
@@ -328,7 +320,6 @@ function populateCourses() {
                 courseArray.sort((a, b) => b[1] - a[1]);
             }
 
-            // append the sorted courses to the DOM
             courseArray.forEach(function(courses) {
                 courseZone.append(courses[0]);
             });
@@ -347,7 +338,7 @@ function populateCourses() {
 
 function changeTopic(option) {
     document.getElementById('select-topic').innerText = option;
-    populateCourses();
+    populateCourses();  
 }
 
 function changeSort(option) {
