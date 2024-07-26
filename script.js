@@ -3,10 +3,10 @@ $(document).ready(function() {
     const currentPath = window.location.pathname;
     console.log("Current path:", currentPath);
 
-    const basePath = '/';
+    const basePath = '/atlas-smiling-school-javascript/';
     console.log("Base path:", basePath);
 
-    if (currentPath === `${basePath}index.html`) {
+    if (currentPath === `${basePath}index.html` || currentPath === `${basePath}`) {
         console.log("Populating quotes for homepage");
         populateQuotes();
         populateTutorials();
