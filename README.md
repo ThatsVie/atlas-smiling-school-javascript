@@ -86,6 +86,8 @@ This project is an enhancement of the Holberton Smiling School project, adding d
 
 The primary JavaScript functionalities added to the project include dynamic content loading for quotes, tutorials, latest videos, and courses using AJAX requests. The functionality also includes handling user interactions for filtering and sorting courses.
 
+**You can view the deployed project here: [Atlas Smiling School Javascript](https://thatsvie.github.io/atlas-smiling-school-javascript/)**
+
 ## Functions
 
 1. **Document Ready Initialization**
