@@ -254,8 +254,8 @@ function populateCourses() {
         success: function(response) {
             console.log("Courses data received:", response);
 
-            const courseZone = $('#course-zone');
-            courseZone.empty();
+            const courseList = $('#course-list');
+            courseList.empty();
 
             let courseCount = 0;
             let courseArray = [];
@@ -321,7 +321,7 @@ function populateCourses() {
             }
 
             courseArray.forEach(function(courses) {
-                courseZone.append(courses[0]);
+                courseList.append(courses[0]);
             });
 
             $('.video-count').text(`${courseCount} videos`);
