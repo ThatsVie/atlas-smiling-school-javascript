@@ -88,7 +88,14 @@ The primary JavaScript functionalities added to the project include dynamic cont
 
 **You can view the deployed project here: [Atlas Smiling School Javascript](https://thatsvie.github.io/atlas-smiling-school-javascript/)**
 
-## Functions
+## Features
+
+1. **Dynamic Content Loading:** Load content dynamically for different sections using AJAX.
+2. **User Interaction Handling:** Filter and sort courses based on user input.
+3. **Responsive Design:** Ensures compatibility across various devices and screen sizes.
+
+
+## JavaScript Functions
 
 1. **Document Ready Initialization**
  
@@ -113,6 +120,33 @@ The primary JavaScript functionalities added to the project include dynamic cont
 6. **populateCourses**
  
    This function dynamically loads courses based on selected keywords, topics, and sorting preferences, and updates the course zone.
+
+## Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+- jQuery
+- Bootstrap
+- Slick Carousel
+- AJAX
+
+## Setup and Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ThatsVie/atlas-smiling-school-javascript.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd atlas-smiling-school-javascript
+   ```
+3. Open `index.html` in your browser to view the project locally.
+
+## Deployment
+
+The project is deployed on GitHub Pages. You can view it [here](https://thatsvie.github.io/atlas-smiling-school-javascript/).
+
 
 ## Author
 Vie Paula - [Github](https://github.com/ThatsVie)
